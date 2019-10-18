@@ -6,14 +6,23 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [
     {
-      path: '/home',
-      component: () => import( /* webpackChunkName: "group-home" */ '@/views/home')
+      path: '/login',
+      component: () => import('@/views/user/login')
     },
     {
-      path: '/userlist',
-      component: () => import( /* webpackChunkName: "group-home" */ '@/views/user/userlist')
+      path: '/',
+      component: () => import('@/views/main'),
+      children: [
+        {
+          path: '',
+          component: () => import('@/views/user/home')
+        },
+        {
+          path: '/userlist',
+          component: () => import('@/views/user/userlist')
+        }
+      ]
     },
-    { path: '/', redirect: '/home' }
   ]
 })
 

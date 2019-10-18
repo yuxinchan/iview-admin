@@ -28,10 +28,13 @@
         <Sider collapsible :collapsed-width="78" v-model="isCollapsed">
           <Menu
               ref="leftMenu" @on-open-change="isCollapsed=false"
-              @on-select="isCollapsed=false" active-name="1-2"
-              theme="dark" width="auto" :class="menuitemClasses"
-              :open-names="openNames"
+              @on-select="isCollapsed=false" theme="dark" active-name="0-1"
+              width="auto" :class="menuitemClasses" :open-names="openNames"
           >
+            <MenuItem name="0-1" to="/">
+              <Icon type="ios-navigate"></Icon>
+              <span>工作平台</span>
+            </MenuItem>
             <Submenu name="1">
               <template slot="title">
                 <Icon type="md-people"></Icon>
@@ -60,7 +63,7 @@
             </Submenu>
           </Menu>
         </Sider>
-        <Layout :style="{padding: '0 24px 24px'}">
+        <Layout style="padding: 15px">
           <router-view></router-view>
         </Layout>
       </Layout>
@@ -70,10 +73,9 @@
 
 <script>
   export default {
-    name: "home",
     data () {
       return {
-        openNames: ["2"],
+        openNames: [],
         isCollapsed: false
       };
     },
