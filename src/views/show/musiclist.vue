@@ -2,7 +2,7 @@
   <div>
     <Breadcrumb style="margin-bottom:10px">
       <BreadcrumbItem>工作平台</BreadcrumbItem>
-      <BreadcrumbItem>用户管理</BreadcrumbItem>
+      <BreadcrumbItem>音乐发现</BreadcrumbItem>
       <BreadcrumbItem>音乐排行</BreadcrumbItem>
     </Breadcrumb>
     <div>

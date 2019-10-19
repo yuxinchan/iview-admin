@@ -28,8 +28,8 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getUserList() {
-      return service.user.getUserList()
+    getStarList() {
+      return service.user.getStarList()
     }
   }
 })

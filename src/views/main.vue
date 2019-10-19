@@ -6,11 +6,10 @@
           <div class="layout-logo">YuXin音乐管理平台</div>
             <Submenu name="1">
               <template slot="title">
-                <Icon type="md-people"></Icon>
+                <Icon type="md-person"></Icon>
                 <span>{{userName}}</span>
               </template>
-              <MenuItem name="-1" to="/userlist">用户中心</MenuItem>
-              <MenuItem name="-2" @click.native="logout">退出</MenuItem>
+              <MenuItem name="account" @click.native="logout">退出</MenuItem>
             </Submenu>
         </Menu>
       </Header>
@@ -22,34 +21,22 @@
               width="auto" :class="menuitemClasses" :open-names="openNames"
           >
             <MenuItem name="0-1" to="/">
-              <Icon type="ios-navigate"></Icon>
+              <Icon type="md-pie"></Icon>
               <span>工作平台</span>
             </MenuItem>
             <Submenu name="1">
               <template slot="title">
-                <Icon type="md-people"></Icon>
-                <span>用户管理</span>
+                <Icon type="ios-nuclear"></Icon>
+                <span>歌曲管理</span>
               </template>
-              <MenuItem name="1-1" to="/userlist">用户列表</MenuItem>
-              <MenuItem name="1-2" to="/userstatistics">用户统计</MenuItem>
+              <MenuItem name="1-1" to="/starlist">收藏列表</MenuItem>
             </Submenu>
             <Submenu name="2">
               <template slot="title">
-                <Icon type="ios-paper"></Icon>
-                <span>音乐管理</span>
+                <Icon type="ios-navigate"></Icon>
+                <span>音乐发现</span>
               </template>
               <MenuItem name="2-1" to="/musiclist">音乐排行</MenuItem>
-              <MenuItem name="2-2">Option 2</MenuItem>
-              <MenuItem name="2-3">Option 3</MenuItem>
-            </Submenu>
-            <Submenu name="3">
-              <template slot="title">
-                <Icon type="md-cart"></Icon>
-                <span>商品管理</span>
-              </template>
-              <MenuItem name="3-1">Option 1</MenuItem>
-              <MenuItem name="3-2">Option 2</MenuItem>
-              <MenuItem name="3-3">Option 3</MenuItem>
             </Submenu>
           </Menu>
         </Sider>

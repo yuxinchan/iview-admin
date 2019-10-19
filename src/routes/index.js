@@ -26,10 +26,10 @@ const router = new VueRouter({
           }
         },
         {
-          path: '/userlist',
-          component: () => import('@/views/user/userlist'),
+          path: '/starlist',
+          component: () => import('@/views/user/starlist'),
           meta: {
-            title: "用户列表",
+            title: "收藏列表",
             order: "1-1"
           }
         },
