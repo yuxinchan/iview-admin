@@ -166,6 +166,8 @@ _.extend(String.prototype, {
 
     var left = this.substring(0, start)
     var middle = code.repeat(end - start)
+
+    //eslint-disable-next-line
     var end = this.substring(end)
     return left + middle + end
   },
@@ -377,6 +379,8 @@ _.extend(Array.prototype, {
     return arr
   },
   includes(obj) {
+
+    //eslint-disable-next-line
     return this.some(function (item, i) {
       return item === obj
     })

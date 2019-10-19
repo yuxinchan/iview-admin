@@ -7,7 +7,7 @@
             <Submenu name="1">
               <template slot="title">
                 <Icon type="md-people"></Icon>
-                <span>yuxinchan</span>
+                <span>{{userName}}</span>
               </template>
               <MenuItem name="-1" to="/userlist">用户中心</MenuItem>
               <MenuItem name="-2" @click.native="logout">退出</MenuItem>
@@ -62,6 +62,7 @@
 </template>
 
 <script>
+  import { mapGetters, mapMutations } from 'vuex'
   export default {
     data () {
       return {
@@ -90,6 +91,7 @@
       }
     },
     computed: {
+      ...mapGetters(["userName"]),
       menuitemClasses: function () {
         return [
           'menu-item',
@@ -99,8 +101,9 @@
     },
 
     methods: {
+      ...mapMutations(["removeLoginUserName"]),
       logout() {
-        sessionStorage.removeItem("loginuser")
+        this.removeLoginUserName()
         this.$router.push("/login")
       },
       selectItem(name) {

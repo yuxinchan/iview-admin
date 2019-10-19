@@ -55,9 +55,11 @@ ViewUI.LoadingBar.config({
   color: '#2d8cf0'
 })
 
+import util from '@/util'
+import config from '@/config'
 router.beforeEach((to, from, next) => {
   if (to.path !== "/login") {
-    if(!sessionStorage.getItem("loginuser")) {
+    if(!util.storage.get(config.KEY.CACHE_LOGIN_USER_NAME)) {
       return next("/login")
     }
   }

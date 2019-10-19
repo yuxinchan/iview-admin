@@ -4,6 +4,6 @@ export default {
     UPLOADEURL:"/user/uploadimg"
   },
   KEY:{
-    CACHE_LOGIN_USER:'loginuser123'
+    CACHE_LOGIN_USER_NAME:'login_user'
   }
 }

@@ -13,16 +13,18 @@
 
 <script>
   import LoginForm from '@/components/login-form/login-form'
+  import { mapMutations } from "vuex"
   // import axios from 'axios'
   export default {
     components: {
       LoginForm
     },
     methods: {
+      ...mapMutations(["setLoginUserName"]),
       handleSubmit ({ userName, password }) {
         if (userName && password) {
           this.$Message.success("登录成功")
-          sessionStorage.setItem("loginuser",userName)
+          this.setLoginUserName(userName)
           setTimeout(() => {
             this.$router.push("/")
           }, 0)

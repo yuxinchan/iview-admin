@@ -5,7 +5,12 @@
       <BreadcrumbItem>用户管理</BreadcrumbItem>
       <BreadcrumbItem>用户列表</BreadcrumbItem>
     </Breadcrumb>
-    <Table  border :columns="cols" :data="users"></Table>
+    <div style="margin:10px 0">
+      <Button type="primary" @click="">添加用户</Button>
+    </div>
+    <div>
+      <Table  border :columns="cols" :data="users"></Table>
+    </div>
   </div>
 </template>
 
