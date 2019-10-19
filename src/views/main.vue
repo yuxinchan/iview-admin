@@ -2,33 +2,23 @@
   <div class="layout">
     <Layout>
       <Header>
-        <Menu mode="horizontal" theme="dark" active-name="1">
-          <div class="layout-logo">YuXin管理平台</div>
-          <div class="layout-nav">
-            <MenuItem name="1">
-              <Icon type="ios-navigate"></Icon>
-              Item 1
-            </MenuItem>
-            <MenuItem name="2">
-              <Icon type="ios-keypad"></Icon>
-              Item 2
-            </MenuItem>
-            <MenuItem name="3">
-              <Icon type="ios-analytics"></Icon>
-              Item 3
-            </MenuItem>
-            <MenuItem name="4">
-              <Icon type="ios-paper"></Icon>
-              Item 4
-            </MenuItem>
-          </div>
+        <Menu mode="horizontal" class="flex j-center j-bt" theme="dark" active-name="1">
+          <div class="layout-logo">YuXin音乐管理平台</div>
+            <Submenu name="1">
+              <template slot="title">
+                <Icon type="md-people"></Icon>
+                <span>yuxinchan</span>
+              </template>
+              <MenuItem name="-1" to="/userlist">用户中心</MenuItem>
+              <MenuItem name="-2" @click.native="logout">退出</MenuItem>
+            </Submenu>
         </Menu>
       </Header>
       <Layout style="height:calc(100vh - 64px)">
         <Sider collapsible :collapsed-width="78" v-model="isCollapsed">
           <Menu
-              ref="leftMenu" @on-open-change="isCollapsed=false"
-              @on-select="isCollapsed=false" theme="dark" active-name="0-1"
+              ref="leftMenu" @on-open-change="isCollapsed=false" :accordion="true"
+              @on-select="selectItem" theme="dark" :active-name="activeName"
               width="auto" :class="menuitemClasses" :open-names="openNames"
           >
             <MenuItem name="0-1" to="/">
@@ -41,14 +31,14 @@
                 <span>用户管理</span>
               </template>
               <MenuItem name="1-1" to="/userlist">用户列表</MenuItem>
-              <MenuItem name="1-2">用户统计</MenuItem>
+              <MenuItem name="1-2" to="/userstatistics">用户统计</MenuItem>
             </Submenu>
             <Submenu name="2">
               <template slot="title">
                 <Icon type="ios-paper"></Icon>
-                <span>订单管理</span>
+                <span>音乐管理</span>
               </template>
-              <MenuItem name="2-1">Option 1</MenuItem>
+              <MenuItem name="2-1" to="/musiclist">音乐排行</MenuItem>
               <MenuItem name="2-2">Option 2</MenuItem>
               <MenuItem name="2-3">Option 3</MenuItem>
             </Submenu>
@@ -76,8 +66,18 @@
     data () {
       return {
         openNames: [],
+        activeName: '',
         isCollapsed: false
-      };
+      }
+    },
+    created() {
+      if (this.$route.meta && this.$route.meta.order) {
+        this.activeName = this.$route.meta.order
+        let submenuName = this.$route.meta.order.split('-')[0]
+        if (submenuName !== '0') {
+          this.openNames.push(submenuName)
+        }
+      }
     },
     watch: {
       isCollapsed(val) {
@@ -95,6 +95,22 @@
           'menu-item',
           this.isCollapsed ? 'collapsed-menu' : ''
         ]
+      }
+    },
+
+    methods: {
+      logout() {
+        sessionStorage.removeItem("loginuser")
+        this.$router.push("/login")
+      },
+      selectItem(name) {
+        this.isCollapsed = false
+        if (name.startsWith('0')) {
+          this.openNames = []
+          this.$nextTick(() => {
+            this.$refs.leftMenu.updateOpened()
+          })
+        }
       }
     }
   }
@@ -154,5 +170,9 @@
     transition: font-size .2s ease .2s, transform .2s ease .2s;
     vertical-align: middle;
     font-size: 22px;
+  }
+
+  .ivu-layout-header {
+    padding: 0 !important;
   }
 </style>

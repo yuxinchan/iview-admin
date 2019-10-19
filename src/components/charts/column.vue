@@ -9,12 +9,12 @@
     mounted() {
       this.$nextTick(() => {
         const data = [
-          { genre: '新增用户', sold: 23 },
-          { genre: '累计点击', sold: 240 },
+          { genre: '新增粉丝', sold: 23 },
+          { genre: '累计评论', sold: 240 },
           { genre: '新增回答', sold: 158 },
           { genre: '分享统计', sold: 541 },
           { genre: '新增互动', sold: 242 },
-          { genre: '新增页面', sold: 19 }
+          { genre: '最近收听', sold: 19 }
         ] // G2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
           // Step 1: 创建 Chart 对象
         const chart = new G2.Chart({

@@ -14,10 +14,10 @@
     <!--</div>-->
     <Row>
       <Col :sm="{span: 12}" :md="{span: 8}" :lg="{span: 6}" :xl="{span: 4}">
-        <mycard class="mycard" icon="md-person-add" title="新增用户" :count="23" bgcolor="#2d8cf0"></mycard>
+        <mycard class="mycard" icon="md-person-add" title="新增粉丝" :count="23" bgcolor="#2d8cf0"></mycard>
       </Col>
       <Col :sm="{span: 12}" :md="{span: 8}" :lg="{span: 6}" :xl="{span: 4}">
-        <mycard class="mycard" icon="md-locate" title="累计点击" :count="240" bgcolor="#19be6b"></mycard>
+        <mycard class="mycard" icon="md-locate" title="累计评论" :count="240" bgcolor="#19be6b"></mycard>
       </Col>
       <Col :sm="{span: 12}" :md="{span: 8}" :lg="{span: 6}" :xl="{span: 4}">
         <mycard class="mycard" icon="md-help-circle" title="新增问答" :count="158" bgcolor="#ff9900"></mycard>
@@ -29,7 +29,7 @@
         <mycard class="mycard" icon="md-contacts" title="新增互动" :count="242" bgcolor="#ee3322"></mycard>
       </Col>
       <Col :sm="{span: 12}" :md="{span: 8}" :lg="{span: 6}" :xl="{span: 4}">
-        <mycard class="mycard lastcard" icon="md-map" title="新增页面" :count="19" bgcolor="#8e6cdd"></mycard>
+        <mycard class="mycard lastcard" icon="md-map" title="最近收听" :count="19" bgcolor="#8e6cdd"></mycard>
       </Col>
     </Row>
     <Row>

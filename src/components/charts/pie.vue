@@ -9,11 +9,11 @@
     mounted() {
       this.$nextTick(() => {
         var data = [{
-          item: '新增用户',
+          item: '新增粉丝',
           count: 23,
           percent: 0.019
         }, {
-          item: '累计点击',
+          item: '累计评论',
           count: 240,
           percent: 0.196
         }, {
@@ -29,7 +29,7 @@
           count: 242,
           percent: 0.198
         }, {
-          item: '新增页面',
+          item: '最近收听',
           count: 19,
           percent: 0.016
         }]
