@@ -5,9 +5,10 @@ function resolve(dir) {
 }
 module.exports = {
   publicPath: './',
+  outputDir: 'docs',
   lintOnSave: true,
   chainWebpack: (config) => {
     config.resolve.alias
       .set('@', resolve('src'))
-  }
+  },
 };
