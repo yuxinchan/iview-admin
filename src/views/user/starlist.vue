@@ -9,18 +9,18 @@
       <Button type="primary" @click="showmodal=true">添加音乐</Button>
     </div>
     <div>
-      <Table  border :columns="cols" :data="users"></Table>
+      <Table  border :columns="cols" :data="music"></Table>
     </div>
-    <Modal v-model="showmodal" title="添加音乐" @on-ok="saveUser">
-      <Form :model="formItem" :label-width="80">
+    <Modal v-model="showmodal" title="添加音乐" @on-ok="saveUser('newMusicForm')">
+      <Form :model="formItem" ref="newMusicForm" :label-width="80">
         <FormItem label="专辑">
-          <Input v-model="formItem.input" placeholder="添加专辑"></Input>
+          <Input v-model="formItem.album" placeholder="添加专辑"></Input>
         </FormItem>
         <FormItem label="歌名">
-          <Input v-model="formItem.input" placeholder="添加歌名"></Input>
+          <Input v-model="formItem.name" placeholder="添加歌名"></Input>
         </FormItem>
         <FormItem label="类型">
-          <Select v-model="formItem.select">
+          <Select v-model="formItem.type">
             <Option value="摇滚">摇滚</Option>
             <Option value="民摇">民摇</Option>
             <Option value="嘻哈">嘻哈</Option>
@@ -35,7 +35,7 @@
           </Row>
         </FormItem>
         <FormItem label="评级">
-          <RadioGroup v-model="formItem.radio">
+          <RadioGroup v-model="formItem.grade">
             <Radio label="极好">极好</Radio>
             <Radio label="好听">好听</Radio>
             <Radio label="一般">一般</Radio>
@@ -56,11 +56,11 @@
     data () {
       return {
         formItem: {
-          input: '',
-          select: '',
-          radio: '一般',
+          album: '',
+          name: '',
+          type: '',
           date: '',
-          time: '',
+          grade: '一般',
           textarea: ''
         },
         showmodal: false,
@@ -115,7 +115,7 @@
             }
           }
         ],
-        users: [
+        music: [
           {
             album: '时空',
             name: '虫洞',
@@ -158,14 +158,24 @@
       show (index) {
         this.$Modal.info({
           title: '用户信息',
-          content: `专辑：${this.users[index].album}<br>歌名：${this.users[index].name}<br>类型：${this.users[index].type}<br>评级：${this.users[index].grade}`
+          content: `专辑：${this.music[index].album}<br>歌名：${this.music[index].name}<br>类型：${this.music[index].type}<br>评级：${this.music[index].grade}`
         })
       },
       remove (index) {
-        this.users.splice(index, 1)
+        this.music.splice(index, 1)
       },
-      saveUser() {
-
+      saveUser(name) {
+        let newMusic = {}
+        newMusic.album = this.formItem.album
+        newMusic.name = this.formItem.name
+        newMusic.type = this.formItem.type
+        newMusic.date = this.formItem.date
+        newMusic.grade = this.formItem.grade
+        this.music.push(newMusic)
+        this.resetForm(name)
+      },
+      resetForm(name) {
+        this.$refs[name].resetFields()
       }
     }
   }
